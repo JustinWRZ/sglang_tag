@@ -43,6 +43,9 @@ unzip sglang-h3-compat-0.3.1-wheels.zip -d .
 curl -fL -o dist/sageattention-2.2.0-cp312-cp312-linux_x86_64.whl \
   "$GITEA_COMPAT_RELEASE/sageattention-2.2.0-cp312-cp312-linux_x86_64.whl"
 
+# 公共替代渠道：GitHub Release（v0.3.1 含 9 插件 zip + sageattention；media-api-v0.1.0 含 media 插件）
+# https://github.com/JustinWRZ/sglang_tag/releases
+
 VENV=<步骤1中sglang目录>/venv    # 绝对路径
 uv pip install --python $VENV/bin/python --find-links dist sglang-h3-compat
 uv pip install --python $VENV/bin/python --find-links dist sageattention==2.2.0
