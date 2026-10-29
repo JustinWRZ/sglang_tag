@@ -106,6 +106,10 @@ Eight source packages produce nine wheels: the repo-root meta bundle is a packag
 
 SGLang discovers plugins through the `sglang.multimodal_gen.plugins` entry-points declared in each feature wheel's `pyproject.toml`; the implementations they call live in `sglang-h3-compat-core`. Only the six feature wheels are loaded via `SGLANG_PLUGINS`; bundle/core/native are dependency infrastructure. Rebuild everything with `python tools/build_packages.py` (output lands in `packages/dist/`, untracked).
 
+## Release convention
+
+Each release tag (`vX.Y.Z`) is a **full snapshot** of the current latest wheels: the `sglang-h3-compat-X.Y.Z-wheels.zip` archive contains every plugin wheel at its current version, and every wheel plus the third-party `sageattention` kernel is also attached standalone. Unchanged packages keep their existing version numbers; the release version tracks the newest addition.
+
 ## Install all features
 
 ### From the internal Gitea repository

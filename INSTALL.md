@@ -38,16 +38,16 @@ GITEA_COMPAT_RELEASE=<internal gitea sglang_compat release download base>
 git clone -b plugin-standalone "$GITEA_COMPAT_URL" h3_plugins
 cd h3_plugins
 mkdir -p dist
-curl -fL -O "$GITEA_COMPAT_RELEASE/sglang-h3-compat-0.3.1-wheels.zip"
-unzip sglang-h3-compat-0.3.1-wheels.zip -d .
+curl -fL -O "$GITEA_COMPAT_RELEASE/sglang-h3-compat-0.3.2-wheels.zip"
+unzip sglang-h3-compat-0.3.2-wheels.zip -d .
 curl -fL -o dist/sageattention-2.2.0-cp312-cp312-linux_x86_64.whl \
   "$GITEA_COMPAT_RELEASE/sageattention-2.2.0-cp312-cp312-linux_x86_64.whl"
 
-# 公共替代渠道：GitHub Release（v0.3.1 含 9 插件 zip + sageattention；v0.3.2 含 media 插件）
+# 公共替代渠道：GitHub Release（v0.3.2 = 全量快照：zip 含全部 10 个插件 wheel + sageattention 单发）
 # https://github.com/JustinWRZ/sglang_tag/releases
 
 VENV=<步骤1中sglang目录>/venv    # 绝对路径
-uv pip install --python $VENV/bin/python --find-links dist sglang-h3-compat
+uv pip install --python $VENV/bin/python --find-links dist sglang-h3-compat sglang-h3-media-api
 uv pip install --python $VENV/bin/python --find-links dist sageattention==2.2.0
 ```
 
@@ -98,7 +98,7 @@ curl -sS http://127.0.0.1:30314/v1/videos/<id>/content -o out.mp4
 
 ## （可选）media v1 协议端点
 
-安装 `sglang-h3-media-api` wheel（内部 Release `v0.3.2`，或 `python tools/build_packages.py` 同源构建）并加入 `SGLANG_PLUGINS` 列表（插件名 `h3_media_api`），即获得统一 media 协议：
+安装 `sglang-h3-media-api` wheel（已包含在 v0.3.2 全量 zip 中，亦可从 Release 单独下载或 `python tools/build_packages.py` 同源构建）并加入 `SGLANG_PLUGINS` 列表（插件名 `h3_media_api`），即获得统一 media 协议：
 
 - `POST /generate`（严格校验 422/幂等 409/202 受理）、`GET /{job_id}/status`（支持 `?wait=0..60` 长轮询）、`GET /{job_id}`（B.5 结果信封，进行中 202/失败 410）、`DELETE /{job_id}`、`GET /jobs`、`GET /health`（media 信封，覆盖引擎原生）
 - 支持范围与全部拒绝信息以 `packages/media_api/sglang_h3_media_api/capabilities.py` 为唯一事实源（文档见该包 README）
