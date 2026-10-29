@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sglang-h3-media-api"
+version = "0.1.0"
+description = "MiniMax-H3 media v1 protocol plugin for SGLang Diffusion 0.5.22"
+license = { file = "LICENSE" }
+requires-python = ">=3.11"
+
+[project.entry-points."sglang.multimodal_gen.plugins"]
+h3_media_api = "sglang_h3_media_api:register"
+
+[tool.setuptools.packages.find]
+include = ["sglang_h3_media_api*"]

@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sglang-h3-nvenc"
+version = "0.3.1"
+description = "MiniMax-H3 NVENC output hook for SGLang Diffusion"
+license = { file = "LICENSE" }
+requires-python = ">=3.11"
+dependencies = ["sglang-h3-compat-core==0.3.1"]
+
+[project.entry-points."sglang.multimodal_gen.plugins"]
+h3_nvenc = "sglang_h3_nvenc:register"
+
+[tool.setuptools.packages.find]
+include = ["sglang_h3_nvenc*"]

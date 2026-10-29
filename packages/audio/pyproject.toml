@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sglang-h3-audio-loudness"
+version = "0.3.1"
+description = "MiniMax-H3 ComfyUI-compatible audio loudness hook"
+license = { file = "LICENSE" }
+requires-python = ">=3.11"
+dependencies = ["sglang-h3-compat-core==0.3.1"]
+
+[project.entry-points."sglang.multimodal_gen.plugins"]
+h3_audio_loudness = "sglang_h3_audio_loudness:register"
+
+[tool.setuptools.packages.find]
+include = ["sglang_h3_audio_loudness*"]

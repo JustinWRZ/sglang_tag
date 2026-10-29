@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sglang-h3-compat"
+version = "0.3.1"
+description = "MiniMax-H3 compatibility plugin bundle for SGLang Diffusion 0.5.22"
+license = { file = "LICENSE" }
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "sglang-h3-request-fields==0.3.1",
+  "sglang-h3-denoise-compat==0.3.1",
+  "sglang-h3-state-export==0.3.1",
+  "sglang-h3-low-memory==0.3.1",
+  "sglang-h3-nvenc==0.3.1",
+  "sglang-h3-audio-loudness==0.3.1",
+]
+
+[tool.setuptools.packages.find]
+include = ["sglang_h3_compat_bundle*"]
