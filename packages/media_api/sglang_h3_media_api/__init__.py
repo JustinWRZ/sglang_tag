@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-__version__ = "0.1.0"
+__version__ = "0.3.2"
 
 _CREATE_APP_TARGET = (
     "sglang.multimodal_gen.runtime.entrypoints.http_server.create_app"
